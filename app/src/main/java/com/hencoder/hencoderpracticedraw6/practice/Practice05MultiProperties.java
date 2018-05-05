@@ -14,6 +14,8 @@ public class Practice05MultiProperties extends ConstraintLayout {
     Button animateBt;
     ImageView imageView;
 
+    private int clickCount = 0;
+
     public Practice05MultiProperties(Context context) {
         super(context);
     }
@@ -39,6 +41,20 @@ public class Practice05MultiProperties extends ConstraintLayout {
             @Override
             public void onClick(View v) {
                 // TODO 在这里处理点击事件，同时对多个属性做动画
+                switch (clickCount){
+                    case 0:
+                        imageView.animate().translationX(500)
+                        .scaleY(1f).scaleX(1f).alpha(1f).rotation(360);
+                        break;
+                    case 1:
+                        imageView.animate().translationX(0)
+                                .scaleY(0f).scaleX(0f).alpha(0f).rotation(0);
+                        break;
+                }
+                clickCount++;
+                if (clickCount == 2) {
+                    clickCount = 0;
+                }
             }
         });
     }
